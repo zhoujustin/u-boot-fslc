@@ -642,6 +642,7 @@ int board_init(void)
 
 int power_init_board(void)
 {
+#ifdef CONFIG_PFUZE100
 	struct pmic *p;
 	unsigned int reg;
 	int ret;
@@ -665,7 +666,7 @@ int power_init_board(void)
 	reg &= ~LDO_VOL_MASK;
 	reg |= LDOB_3_00V;
 	pmic_reg_write(p, PFUZE100_VGEN5VOL, reg);
-
+#endif //CONFIG_PFUZE100
 	return 0;
 }
 
